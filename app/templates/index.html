@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-xs-8 col-xs-offset-2">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="basic-addon1 search-domain"><i class="icon-search"></i></span>
+                    <input type="text" class="form-control" id="search-domain" placeholder="Search for ..."
+                           aria-describedby="basic-addon1">
+                </div>
+                <!-- /input-group -->
+                <div class="search-tip">
+                    <ul class="search-list">
+                        <li><span class="label label-warning">.com</span></li>
+                        <li><span class="label label-warning">.net</span></li>
+                        <li><span class="label label-warning">.org</span></li>
+                        <li><span class="label label-warning">.co</span></li>
+                    </ul>
+                </div>
+                <!-- /input-group -->
+            </div>
+        </div>
+      <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 ">
+
+              <table id="example" class="table table-hover price-table" cellspacing="0" width="100%">
+                  <thead class="price-thead">
+                  <tr>
+                      <th class="price-th">Domain</th>
+                      <th></th>
+                      <th class="price-th">Register</th>
+                      <th></th>
+                      <th class="price-th">Renewal</th>
+                      <th></th>
+                      <th class="price-th">Transfer</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for cheap in cheap_prices %}
+                      <tr class="price-td">
+                          <td class="price-td"><a href="#">{{ cheap.extension }}</a></td>
+                          <td class="price-td"><a href="#"><img src="{{ url_for('static',filename='imags/registrars/godaddy_logo.png') }}" class="table-logo" alt=""/>{{ cheap.reg_registrar }}</a></td>
+                          <td class="price-td"><a href="#">${{ cheap.reg_price }}</a></td>
+                          <td class="price-td"><a href="#">{{ cheap.renew_registrar }}</a></td>
+                          <td class="price-td"><a href="#">${{ cheap.renew_price }}</a></td>
+                          <td class="price-td"><a href="#">{{ cheap.tran_registrar }}</a></td>
+                          <td class="price-td"><a href="#">${{ cheap.tran_price }}</a></td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+{% endblock %}
